@@ -17,6 +17,8 @@ import org.json.JSONObject;
 
 public class OneSignalPush {
 
+    public static final int NOTIFICATION_PERMISSION_REQUEST_CODE = 22;
+
     public static class Builder {
 
         private static final String TAG = "OneSignalPush";
@@ -87,7 +89,7 @@ public class OneSignalPush {
         public void requestNotificationPermission() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 if (context.checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions((Activity) context, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 22);
+                    ActivityCompat.requestPermissions((Activity) context, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, OneSignalPush.NOTIFICATION_PERMISSION_REQUEST_CODE);
                 }
             }
         }
